@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="restaurantedbModelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="cardapio">
+    <Key>
+      <PropertyRef Name="idcardapio" />
+    </Key>
+    <Property Name="idcardapio" Type="Int32" Nullable="false" />
+    <Property Name="descricao" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="item_cardapio" Relationship="Self.FK_CARDAPIO" FromRole="cardapio" ToRole="item_cardapio" />
+  </EntityType>
+  <EntityType Name="comanda">
+    <Key>
+      <PropertyRef Name="idcomanda" />
+    </Key>
+    <Property Name="idcomanda" Type="Int32" Nullable="false" />
+    <Property Name="Consumo" Type="Double" />
+    <NavigationProperty Name="consumo_comanda" Relationship="Self.FK_COMANDA" FromRole="comanda" ToRole="consumo_comanda" />
+  </EntityType>
+  <EntityType Name="consumo_comanda">
+    <Key>
+      <PropertyRef Name="idconsumo_comanda" />
+    </Key>
+    <Property Name="idconsumo_comanda" Type="Int32" Nullable="false" />
+    <Property Name="idmesa" Type="Int32" />
+    <Property Name="idcomanda" Type="Int32" />
+    <Property Name="itemcardapio" Type="Int32" />
+    <Property Name="quantidade" Type="Int32" />
+    <NavigationProperty Name="comanda" Relationship="Self.FK_COMANDA" FromRole="consumo_comanda" ToRole="comanda" />
+    <NavigationProperty Name="mesa" Relationship="Self.FK_MESA" FromRole="consumo_comanda" ToRole="mesa" />
+  </EntityType>
+  <EntityType Name="item_cardapio">
+    <Key>
+      <PropertyRef Name="item_cardapio1" />
+    </Key>
+    <Property Name="item_cardapio1" Type="Int32" Nullable="false" />
+    <Property Name="idcardapio" Type="Int32" Nullable="false" />
+    <Property Name="idproduto" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="cardapio" Relationship="Self.FK_CARDAPIO" FromRole="item_cardapio" ToRole="cardapio" />
+    <NavigationProperty Name="produto" Relationship="Self.FK_PRODUTO" FromRole="item_cardapio" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="mesa">
+    <Key>
+      <PropertyRef Name="idmesa" />
+    </Key>
+    <Property Name="idmesa" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="vagas" Type="Int32" />
+    <NavigationProperty Name="consumo_comanda" Relationship="Self.FK_MESA" FromRole="mesa" ToRole="consumo_comanda" />
+  </EntityType>
+  <EntityType Name="produto">
+    <Key>
+      <PropertyRef Name="idproduto" />
+    </Key>
+    <Property Name="idproduto" Type="Int32" Nullable="false" />
+    <Property Name="nome" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="preco" Type="Double" />
+    <Property Name="idtipo" Type="Int32" />
+    <NavigationProperty Name="item_cardapio" Relationship="Self.FK_PRODUTO" FromRole="produto" ToRole="item_cardapio" />
+    <NavigationProperty Name="tipo" Relationship="Self.FK_TIPO" FromRole="produto" ToRole="tipo" />
+  </EntityType>
+  <EntityType Name="tipo">
+    <Key>
+      <PropertyRef Name="idtipo" />
+    </Key>
+    <Property Name="idtipo" Type="Int32" Nullable="false" />
+    <Property Name="descricao" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="produto" Relationship="Self.FK_TIPO" FromRole="tipo" ToRole="produto" />
+  </EntityType>
+  <Association Name="FK_CARDAPIO">
+    <End Role="cardapio" Type="Self.cardapio" Multiplicity="1" />
+    <End Role="item_cardapio" Type="Self.item_cardapio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cardapio">
+        <PropertyRef Name="idcardapio" />
+      </Principal>
+      <Dependent Role="item_cardapio">
+        <PropertyRef Name="idcardapio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COMANDA">
+    <End Role="comanda" Type="Self.comanda" Multiplicity="0..1" />
+    <End Role="consumo_comanda" Type="Self.consumo_comanda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="comanda">
+        <PropertyRef Name="idcomanda" />
+      </Principal>
+      <Dependent Role="consumo_comanda">
+        <PropertyRef Name="idcomanda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MESA">
+    <End Role="mesa" Type="Self.mesa" Multiplicity="0..1" />
+    <End Role="consumo_comanda" Type="Self.consumo_comanda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mesa">
+        <PropertyRef Name="idmesa" />
+      </Principal>
+      <Dependent Role="consumo_comanda">
+        <PropertyRef Name="idmesa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUTO">
+    <End Role="produto" Type="Self.produto" Multiplicity="1" />
+    <End Role="item_cardapio" Type="Self.item_cardapio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produto">
+        <PropertyRef Name="idproduto" />
+      </Principal>
+      <Dependent Role="item_cardapio">
+        <PropertyRef Name="idproduto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIPO">
+    <End Role="tipo" Type="Self.tipo" Multiplicity="0..1" />
+    <End Role="produto" Type="Self.produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo">
+        <PropertyRef Name="idtipo" />
+      </Principal>
+      <Dependent Role="produto">
+        <PropertyRef Name="idtipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="restaurantedbEntidades" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="cardapio" EntityType="Self.cardapio" />
+    <EntitySet Name="comanda" EntityType="Self.comanda" />
+    <EntitySet Name="consumo_comanda" EntityType="Self.consumo_comanda" />
+    <EntitySet Name="item_cardapio" EntityType="Self.item_cardapio" />
+    <EntitySet Name="mesa" EntityType="Self.mesa" />
+    <EntitySet Name="produto" EntityType="Self.produto" />
+    <EntitySet Name="tipo" EntityType="Self.tipo" />
+    <AssociationSet Name="FK_CARDAPIO" Association="Self.FK_CARDAPIO">
+      <End Role="cardapio" EntitySet="cardapio" />
+      <End Role="item_cardapio" EntitySet="item_cardapio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COMANDA" Association="Self.FK_COMANDA">
+      <End Role="comanda" EntitySet="comanda" />
+      <End Role="consumo_comanda" EntitySet="consumo_comanda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MESA" Association="Self.FK_MESA">
+      <End Role="mesa" EntitySet="mesa" />
+      <End Role="consumo_comanda" EntitySet="consumo_comanda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUTO" Association="Self.FK_PRODUTO">
+      <End Role="produto" EntitySet="produto" />
+      <End Role="item_cardapio" EntitySet="item_cardapio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIPO" Association="Self.FK_TIPO">
+      <End Role="tipo" EntitySet="tipo" />
+      <End Role="produto" EntitySet="produto" />
+    </AssociationSet>
+    <EntitySet Name="usuarios" EntityType="restaurantedbModelo.usuarios" />
+  </EntityContainer>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="cod" />
+    </Key>
+    <Property Name="cod" Type="Int32" Nullable="false" />
+    <Property Name="login" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="senha" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{16602B1C-1013-411A-AA54-D736D7B26CD9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>restauranteDBTB</RootNamespace>
+    <AssemblyName>restauranteDBTB</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="controle\CardapioDB.cs" />
+    <Compile Include="controle\Conexao.cs" />
+    <Compile Include="controle\Cripto.cs" />
+    <Compile Include="controle\Item_CardapioDB.cs" />
+    <Compile Include="controle\MesaDB.cs" />
+    <Compile Include="controle\ProdutoDB.cs" />
+    <Compile Include="controle\Registro.cs" />
+    <Compile Include="controle\TipoDB.cs" />
+    <Compile Include="controle\UsuarioDB.cs" />
+    <Compile Include="modelo\cardapio.cs">
+      <DependentUpon>restaurante.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\comanda.cs">
+      <DependentUpon>restaurante.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\consumo_comanda.cs">
+      <DependentUpon>restaurante.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\item_cardapio.cs">
+      <DependentUpon>restaurante.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\mesa.cs">
+      <DependentUpon>restaurante.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\produto.cs">
+      <DependentUpon>restaurante.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\restaurante.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>restaurante.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\restaurante.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>restaurante.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\restaurante.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>restaurante.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\tipo.cs">
+      <DependentUpon>restaurante.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modelo\usuarios.cs">
+      <DependentUpon>restaurante.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pesquisa\FormPesquisaProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pesquisa\FormPesquisaProduto.Designer.cs">
+      <DependentUpon>FormPesquisaProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="report\FormRelatorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="report\FormRelatorio.Designer.cs">
+      <DependentUpon>FormRelatorio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="validacao\FormBancoDados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="validacao\FormBancoDados.Designer.cs">
+      <DependentUpon>FormBancoDados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="validacao\FormCadastroLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="validacao\FormCadastroLogin.Designer.cs">
+      <DependentUpon>FormCadastroLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="validacao\FormFichaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="validacao\FormFichaUsuario.Designer.cs">
+      <DependentUpon>FormFichaUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="validacao\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="validacao\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="visao\FormCardapio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="visao\FormCardapio.Designer.cs">
+      <DependentUpon>FormCardapio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="visao\FormFichaCardapio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="visao\FormFichaCardapio.Designer.cs">
+      <DependentUpon>FormFichaCardapio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="visao\FormFichaItemProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="visao\FormFichaItemProduto.Designer.cs">
+      <DependentUpon>FormFichaItemProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="visao\FormFichaMesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="visao\FormFichaMesa.Designer.cs">
+      <DependentUpon>FormFichaMesa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="visao\FormMesas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="visao\FormMesas.Designer.cs">
+      <DependentUpon>FormMesas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="visao\FormFichaProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="visao\FormFichaProduto.Designer.cs">
+      <DependentUpon>FormFichaProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="visao\FormFichaTipo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="visao\FormFichaTipo.Designer.cs">
+      <DependentUpon>FormFichaTipo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="visao\FormPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="visao\FormPrincipal.Designer.cs">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="visao\FormProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="visao\FormProduto.Designer.cs">
+      <DependentUpon>FormProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="visao\FormSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="visao\FormSplash.Designer.cs">
+      <DependentUpon>FormSplash.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="pesquisa\FormPesquisaProduto.resx">
+      <DependentUpon>FormPesquisaProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="report\FormRelatorio.resx">
+      <DependentUpon>FormRelatorio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="report\rdGraficoProduto.rdlc" />
+    <EmbeddedResource Include="report\rdProduto.rdlc" />
+    <EmbeddedResource Include="report\rdMesa.rdlc" />
+    <EmbeddedResource Include="validacao\FormBancoDados.resx">
+      <DependentUpon>FormBancoDados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="validacao\FormCadastroLogin.resx">
+      <DependentUpon>FormCadastroLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="validacao\FormFichaUsuario.resx">
+      <DependentUpon>FormFichaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="validacao\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="visao\FormCardapio.resx">
+      <DependentUpon>FormCardapio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="visao\FormFichaCardapio.resx">
+      <DependentUpon>FormFichaCardapio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="visao\FormFichaItemProduto.resx">
+      <DependentUpon>FormFichaItemProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="visao\FormFichaMesa.resx">
+      <DependentUpon>FormFichaMesa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="visao\FormMesas.resx">
+      <DependentUpon>FormMesas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="visao\FormFichaProduto.resx">
+      <DependentUpon>FormFichaProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="visao\FormFichaTipo.resx">
+      <DependentUpon>FormFichaTipo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="visao\FormPrincipal.resx">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="visao\FormProduto.resx">
+      <DependentUpon>FormProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="visao\FormSplash.resx">
+      <DependentUpon>FormSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="modelo\restaurante.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>restaurante.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="modelo\restaurante.edmx.diagram">
+      <DependentUpon>restaurante.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\restauranteDBTB.modelo.cardapio.datasource" />
+    <None Include="Properties\DataSources\restauranteDBTB.modelo.comanda.datasource" />
+    <None Include="Properties\DataSources\restauranteDBTB.modelo.consumo_comanda.datasource" />
+    <None Include="Properties\DataSources\restauranteDBTB.modelo.item_cardapio.datasource" />
+    <None Include="Properties\DataSources\restauranteDBTB.modelo.mesa.datasource" />
+    <None Include="Properties\DataSources\restauranteDBTB.modelo.produto.datasource" />
+    <None Include="Properties\DataSources\restauranteDBTB.modelo.restaurantedbEntidades.datasource" />
+    <None Include="Properties\DataSources\restauranteDBTB.modelo.tipo.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="modelo\restaurante.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>restaurante.edmx</DependentUpon>
+      <LastGenOutput>restaurante.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="modelo\restaurante.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>restaurante.edmx</DependentUpon>
+      <LastGenOutput>restaurante.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6c1240ddf0364ef692f2cbb464a24ec8" Name="Diagram1">
+        <EntityTypeShape EntityType="restaurantedbModelo.cardapio" Width="1.5" PointX="7" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="restaurantedbModelo.comanda" Width="1.5" PointX="9.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="restaurantedbModelo.consumo_comanda" Width="1.875" PointX="6.875" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="restaurantedbModelo.item_cardapio" Width="1.5" PointX="4.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="restaurantedbModelo.mesa" Width="1.5" PointX="4.125" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="restaurantedbModelo.produto" Width="1.5" PointX="2.75" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="restaurantedbModelo.tipo" Width="1.5" PointX="0.625" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="restaurantedbModelo.FK_CARDAPIO" ManuallyRouted="false" />
+        <AssociationConnector Association="restaurantedbModelo.FK_COMANDA" ManuallyRouted="false" />
+        <AssociationConnector Association="restaurantedbModelo.FK_MESA" ManuallyRouted="false" />
+        <AssociationConnector Association="restaurantedbModelo.FK_PRODUTO" ManuallyRouted="false" />
+        <AssociationConnector Association="restaurantedbModelo.FK_TIPO" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="restaurantedbModelo.usuarios" Width="1.5" PointX="2" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="restaurantedbModeloStoreContainer" CdmEntityContainer="restaurantedbEntidades">
+    <EntitySetMapping Name="cardapio">
+      <EntityTypeMapping TypeName="restaurantedbModelo.cardapio">
+        <MappingFragment StoreEntitySet="cardapio">
+          <ScalarProperty Name="idcardapio" ColumnName="idcardapio" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comanda">
+      <EntityTypeMapping TypeName="restaurantedbModelo.comanda">
+        <MappingFragment StoreEntitySet="comanda">
+          <ScalarProperty Name="idcomanda" ColumnName="idcomanda" />
+          <ScalarProperty Name="Consumo" ColumnName="Consumo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="consumo_comanda">
+      <EntityTypeMapping TypeName="restaurantedbModelo.consumo_comanda">
+        <MappingFragment StoreEntitySet="consumo_comanda">
+          <ScalarProperty Name="idconsumo_comanda" ColumnName="idconsumo_comanda" />
+          <ScalarProperty Name="idmesa" ColumnName="idmesa" />
+          <ScalarProperty Name="idcomanda" ColumnName="idcomanda" />
+          <ScalarProperty Name="itemcardapio" ColumnName="itemcardapio" />
+          <ScalarProperty Name="quantidade" ColumnName="quantidade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="item_cardapio">
+      <EntityTypeMapping TypeName="restaurantedbModelo.item_cardapio">
+        <MappingFragment StoreEntitySet="item_cardapio">
+          <ScalarProperty Name="item_cardapio1" ColumnName="item_cardapio" />
+          <ScalarProperty Name="idcardapio" ColumnName="idcardapio" />
+          <ScalarProperty Name="idproduto" ColumnName="idproduto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mesa">
+      <EntityTypeMapping TypeName="restaurantedbModelo.mesa">
+        <MappingFragment StoreEntitySet="mesa">
+          <ScalarProperty Name="idmesa" ColumnName="idmesa" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="vagas" ColumnName="vagas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="produto">
+      <EntityTypeMapping TypeName="restaurantedbModelo.produto">
+        <MappingFragment StoreEntitySet="produto">
+          <ScalarProperty Name="idproduto" ColumnName="idproduto" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="preco" ColumnName="preco" />
+          <ScalarProperty Name="idtipo" ColumnName="idtipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo">
+      <EntityTypeMapping TypeName="restaurantedbModelo.tipo">
+        <MappingFragment StoreEntitySet="tipo">
+          <ScalarProperty Name="idtipo" ColumnName="idtipo" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="restaurantedbModelo.usuarios">
+        <MappingFragment StoreEntitySet="usuarios">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="cod" ColumnName="cod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
